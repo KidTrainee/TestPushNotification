@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="vn.bfc.testpushnotification">
+
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <permission android:name="vn.bfc.testpushnotification.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+    <uses-permission android:name="vn.bfc.testpushnotification.permission.C2D_MESSAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:name=".ReproApplication">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+            </intent-filter>
+        </activity>
+        <!--// Specify "ANDROID_ID", "ANDROID_ID_MD5" or "UUID"-->
+        <meta-data
+            android:name="io.repro.android.DeviceID.Mode"
+            android:value="UUID"/>
+
+        <!--<meta-data-->
+            <!--android:name="io.repro.android.PushNotification.ChannelId"-->
+            <!--android:value="YOUR_CHANNEL_ID_TEST_PUSH_NOTIFICATION"/>-->
+
+        <!--<meta-data-->
+            <!--android:name="io.repro.android.PushNotification.ChannelName"-->
+            <!--android:resource="@string/YOUR_CHANNEL_NAME"/>-->
+
+        <!--<meta-data-->
+            <!--android:name="io.repro.android.PushNotification.ChannelDescription"-->
+            <!--android:resource="@string/YOUR_CHANNEL_DESCRIPTION"/>-->
+
+        <!--<meta-data-->
+            <!--android:name="io.repro.android.PushNotification.ShowBadge"-->
+            <!--android:value="true"/>-->
+
+        <!--<service-->
+            <!--android:name=".MyFirebaseInstanceIDService">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>-->
+            <!--</intent-filter>-->
+        <!--</service>-->
+
+        <receiver
+            android:name=".GCMReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <category android:name="vn.bfc.testpushnotification" />
+            </intent-filter>
+        </receiver>
+
+        <meta-data
+            android:name="io.repro.android.PushNotification.SmallIcon"
+            android:resource="@drawable/ic_launcher_background">
+        </meta-data>
+
+        <meta-data
+            android:name="io.repro.android.PushNotification.AccentColor"
+            android:resource="@color/colorPrimary">
+        </meta-data>
+    </application>
+</manifest>

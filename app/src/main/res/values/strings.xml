@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TestPushNotification</string>
+    <string name="YOUR_CHANNEL_NAME">YOUR_CHANNEL_NAME</string>
+    <string name="YOUR_CHANNEL_DESCRIPTION">YOUR_CHANNEL_DESCRIPTION</string>
+</resources>
